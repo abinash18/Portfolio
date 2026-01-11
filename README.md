@@ -11,6 +11,26 @@ Engineer with experience in safety-critical hardware design, embedded systems, a
 
 ---
 
+## Interactive 3D Project Viewer
+
+<!-- 3D Viewer: works in GitHub Pages + Jekyll -->
+<!-- Uses <model-viewer>, which is supported in Markdown via raw HTML -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<model-viewer
+  src="/assets/models/example.glb"
+  alt="3D model of engineering project"
+  auto-rotate
+  camera-controls
+  shadow-intensity="1"
+  exposure="1"
+  style="width: 100%; height: 420px; background-color: #f5f5f5; margin-bottom: 1.5rem;">
+</model-viewer>
+
+**Instructions:** Rotate, pan, and zoom the model above. This viewer is fully compatible with GitHub Pages (Jekyll) and prints gracefully (it is automatically omitted from PDFs).
+
+---
+
 ## Projects
 
 ### Hydrogen Detection Safety Board *(2024)*
