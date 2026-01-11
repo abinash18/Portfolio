@@ -18,7 +18,7 @@ Engineer with experience in safety-critical hardware design, embedded systems, a
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
 <model-viewer
-  src="/assets/models/example.glb"
+  src="/car.glb"
   alt="3D model of engineering project"
   auto-rotate
   camera-controls
