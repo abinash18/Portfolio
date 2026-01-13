@@ -1,0 +1,541 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #cfd8e6 url("about:blank");
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #000;
+}
+
+.page {
+    width: 900px;
+    margin: 20px auto;
+    background: #ffffff;
+    border: 1px solid #666;
+    box-shadow: 0 0 5px #777;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #003366;
+    text-align: center;
+    margin: 30px 0 20px 0;
+    letter-spacing: 1px;
+
+    /* 2000s glow */
+    text-shadow:
+        0 0 4px #ffffff,
+        0 0 8px #cdd8eb,
+        0 0 12px #99aac4;
+}
+
+
+header {
+    background: linear-gradient(to bottom, #003366, #005599);
+    color: #ffffff;
+    padding: 20px;
+    border-bottom: 3px solid #ffcc33;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+header h2 {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+header .contact-info {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+header .contact-info span {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+nav {
+    background: #f0f4ff;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 6px 15px;
+    font-size: 13px;
+}
+
+nav span {
+    margin-right: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #003366;
+}
+
+nav span.section-label {
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+h3 {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #003366;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-intro {
+    font-style: italic;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.two-column {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.two-column .col {
+    display: table-cell;
+    vertical-align: top;
+    padding-right: 20px;
+}
+
+.two-column .col:last-child {
+    padding-right: 0;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 13px;
+    color: #000;
+}
+
+.item-subtitle {
+    font-size: 12px;
+    color: #333;
+}
+
+.item-meta {
+    font-size: 11px;
+    color: #555;
+    font-style: italic;
+}
+
+ul {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 18px;
+}
+
+ul li {
+    margin-bottom: 3px;
+}
+
+.skills-list {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.skills-list li {
+    margin-bottom: 2px;
+}
+
+.tagline-box {
+    border: 1px solid #99b3d1;
+    background: #f5f7fb;
+    padding: 8px 10px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    background: #ffffcc;
+}
+
+footer {
+    border-top: 1px solid #ccc;
+    padding: 10px 20px 15px 20px;
+    font-size: 10px;
+    color: #555;
+    text-align: right;
+}
+
+/* ===== LIGHT THEME FLOATING MENU ===== */
+.floating-menu {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    width: 200px;
+    background: #f7f7ff;
+    border: 2px solid #b7c4d6;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 8px #0003;
+    z-index: 5;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+/* Collapse toggle button */
+.menu-btn {
+    display: block;
+    background: #e6ecf7;
+    border: 1px solid #b7c4d6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    color: #003366;
+    font-weight: bold;
+    user-select: none;
+}
+
+/* Hide checkbox */
+#menuToggle {
+    display: none;
+}
+
+/* Menu content hidden by default */
+.menu-content {
+    margin-top: 10px;
+    display: none;
+}
+
+/* Show when checkbox is checked */
+#menuToggle:checked~.menu-content {
+    display: block;
+}
+
+/* Headings inside menu */
+.floating-menu h4 {
+    margin: 10px 0 4px 0;
+    font-size: 14px;
+    color: #003366;
+    border-bottom: 1px solid #ccd6e4;
+    padding-bottom: 2px;
+}
+
+.floating-menu h5 {
+    margin: 6px 0 2px 0;
+    font-size: 12px;
+    color: #335577;
+}
+
+/* Links */
+.floating-menu a {
+    display: block;
+    padding: 3px 0 3px 8px;
+    font-size: 13px;
+    color: #003366;
+    text-decoration: none;
+}
+
+.floating-menu a:hover {
+    background: #e6ecf7;
+    border-radius: 4px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 800px) {
+    .floating-menu {
+        position: static;
+        width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        margin-bottom: 10px;
+    }
+
+    .menu-btn {
+        width: 100%;
+    }
+}
+
+/* Printable styles */
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    .page {
+        width: 100%;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    nav {
+        background: #ffffff;
+        border-top: none;
+        border-bottom: 1px solid #000;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #003366;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 2px solid #ffcc33;
+    text-decoration: none;
+    font-size: 14px;
+    z-index: 999;
+}
+
+#backToTop:hover {
+    background: #005599;
+}
+
+@media print {
+
+    /* existing rules… */
+    .floating-menu,
+    #backToTop {
+        display: none !important;
+    }
+}
+
+/* ===== TOP BANNER (FULL WIDTH) ===== */
+.top-banner {
+    width: 100%;
+    background: linear-gradient(to bottom, #e8eef9, #cdd8eb);
+    border-bottom: 2px solid #99aac4;
+    padding: 12px 0;
+    box-shadow: 0 2px 4px #0003;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Button container */
+.banner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 0;
+}
+
+/* Embossed 2000s-style flat buttons */
+.banner-buttons a {
+    padding: 8px 16px;
+    background: #f7f9ff;
+    color: #003366;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid #b7c4d6;
+    /* Embossed effect */
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #aab6c8, 0 1px 2px #0002;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Hover effect: subtle highlight */
+.banner-buttons a:hover {
+    background: #ffffff;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #8fa0b8, 0 2px 4px #0003;
+}
+
+/* Mobile: stack buttons */
+@media (max-width: 800px) {
+    .banner-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Hide banner when printing */
+@media print {
+    .top-banner {
+        display: none !important;
+    }
+}
+
+.banner-image {
+    width: 100%;
+    height: 180px;
+    /* ← change this to any height you want */
+    background-image: url("assets/superbanner.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* ← prevents stretch AND prevents crop */
+    background-color: #e8eef9;
+    /* fallback color behind image */
+    border-bottom: 2px solid #99aac4;
+    box-shadow: inset 0 1px 0 #ffffff, inset 0 -1px 0 #b7c4d6, 0 2px 4px #0003;
+}
+
+/* White title overlay */
+.banner-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px #000, 0 0 12px #000;
+    /* 2000s glow */
+    text-align: center;
+    pointer-events: none;
+    /* clicks pass through */
+}
+
+.banner-subtitle {
+    position: absolute;
+    top: 60%;
+    /* slightly lower than the title */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 18px;
+    /* smaller size */
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 4px #000, 0 0 8px #000;
+    text-align: center;
+    pointer-events: none;
+}
+
+header .contact-info a {
+    color: #ffffff;
+    /* matches your header text */
+    text-decoration: underline;
+    /* or none if you want it flat */
+    font-weight: normal;
+}
+
+header .contact-info a {
+    color: #ffcc33;
+    text-decoration: underline;
+}
+
+.side-by-side {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.side-by-side>* {
+    flex: 1;
+    max-width: 50%;
+    border: 2px solid #b7c4d6;
+    border-radius: 8px;
+
+    background: #f7f9ff;
+    box-shadow:
+        inset 1px 1px 0 #ffffff,
+        inset -1px -1px 0 #aab6c8,
+        0 2px 4px #0003;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 800px) {
+    .side-by-side {
+        flex-direction: column;
+    }
+
+    .side-by-side>* {
+        max-width: 100%;
+    }
+}
+
+/* Preview box */
+.model-box {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px solid #99aac4;
+    border-radius: 8px;
+    background: #f7f9ff;
+    box-shadow:
+        inset 1px 1px 0 #ffffff,
+        inset -1px -1px 0 #aab6c8,
+        0 2px 4px #0003;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-img {
+    width: 100%;
+    display: block;
+}
+
+/* Overlay text */
+.preview-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0 4px black;
+}
+
+/* Full-screen viewer modal */
+.viewer-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 9990;
+}
+
+.viewer-content {
+    width: 80%;
+    max-width: 900px;
+    height: 500px;
+    background: #e8eef9;
+    border-radius: 8px;
+    position: relative;
+    padding: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999999;
+}
+
+#three-container {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(#1a1f2b, #0d1117);
+    border: 2px solid #99aac4;
+    border-radius: 8px;
+}

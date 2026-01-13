@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio – Abinash</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/loaders/RGBELoader.js"></script>
+
+    <script>
+        let currentModel = "assets/MechanicalRelaySally.glb";
+
+        function initThreeViewer() {
+            const container = document.getElementById("three-container");
+            container.innerHTML = "";
+
+            // Loading spinner
+            const spinner = document.createElement("div");
+            spinner.innerText = "Loading 3D Model...";
+            spinner.style.cssText = `
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 20px;
+    `;
+            container.appendChild(spinner);
+
+            // Scene
+            const scene = new THREE.Scene();
+
+            // Camera
+            const camera = new THREE.PerspectiveCamera(
+                45,
+                container.clientWidth / container.clientHeight,
+                0.1,
+                1000
+            );
+            // camera.position.set(3, 2, 4);
+
+            // Renderer
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // HDR lighting
+            // const rgbeLoader = new THREE.RGBELoader();
+            // rgbeLoader.load(
+            //     "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r146/examples/textures/equirectangular/venice_sunset_1k.hdr",
+            //     function (texture) {
+            //         texture.mapping = THREE.EquirectangularReflectionMapping;
+            //         scene.environment = texture;
+            //         scene.background = new THREE.Color(0xf7f9ff); // light pastel blue/white
+            //     }
+            // );
+
+            // Ambient light (soft overall brightness)
+            // const ambient = new THREE.AmbientLight(0xffffff, 1.2);
+            // scene.add(ambient);
+
+            // // Key light (main light)
+            // const keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
+            // keyLight.position.set(5, 5, 5);
+            // scene.add(keyLight);
+
+            // Fill light (reduces shadows)
+            // const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            // fillLight.position.set(-5, 3, 2);
+            // scene.add(fillLight);
+
+            // // Rim light (adds outline highlight)
+            // const rimLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            // rimLight.position.set(0, 5, -5);
+            // scene.add(rimLight);
+
+            scene.background = new THREE.Color(0xf7f9ff);
+
+            // Grid floor
+            const grid = new THREE.GridHelper(10, 20, 0x88aaff, 0x446688);
+            grid.position.y = -1;
+            scene.add(grid);
+
+            const ambient = new THREE.AmbientLight(0xffffff, 2);
+            scene.add(ambient);
+
+            // const hemi = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.8);
+            // scene.add(hemi);
+
+
+            // Orbit controls
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 1.5;
+
+
+
+            // Load model
+            const loader = new THREE.GLTFLoader();
+            // loader.load(
+            //     currentModel,
+            //     (gltf) => {
+            //         spinner.remove();
+            //         scene.add(gltf.scene);
+            //     },
+            //     undefined,
+            //     (error) => {
+            //         spinner.innerText = "Failed to load model.";
+            //         console.error(error);
+            //     }
+
+
+
+            // );
+
+            loader.load(currentModel, (gltf) => {
+                spinner.remove();
+                scene.add(gltf.scene);
+
+                // Auto-center and auto-zoom
+                const box = new THREE.Box3().setFromObject(gltf.scene);
+                const size = box.getSize(new THREE.Vector3()).length();
+                const center = box.getCenter(new THREE.Vector3());
+
+                controls.target.copy(center);
+                camera.position.copy(center);
+                camera.position.z += size * 0.9; // adjust zoom
+                camera.position.y += size * 0.5;
+
+                camera.lookAt(center);
+            });
+
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // Modal open/close
+        function openModelViewer(modelPath = null) {
+            if (modelPath) currentModel = modelPath;
+
+            const modal = document.getElementById("viewer-modal");
+            modal.style.display = "flex";
+
+            setTimeout(() => {
+                initThreeViewer();
+            }, 50);
+        }
+
+        function closeModelViewer() {
+            document.getElementById("viewer-modal").style.display = "none";
+        }
+
+        // Click outside to close
+        document.getElementById("viewer-modal").addEventListener("click", function (e) {
+            if (e.target === this) closeModelViewer();
+        });
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="banner-image">
+            <div class="banner-title">Abinash</div>
+            <div class="banner-subtitle">Portfolio</div>
+        </div>
+
+        <div class="banner-buttons">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Page Wrapper (required for floating menu alignment) -->
+    <div class="page-wrapper">
+
+        <!-- Floating Menu -->
+        <div class="floating-menu">
+            <button class="menu-btn">Menu</button>
+            <div class="menu-content">
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="page">
+            <header>
+                <h1></h1>
+                <h2></h2>
+
+                <div class="contact-info">
+                    <span></span>
+                    <!-- <span>Phone: (000) 000-0000</span> -->
+                    <span></span>
+                    <!-- <span>Website: www.your-portfolio.com</span> -->
+                </div>
+            </header>
+            <h1>My Portfolio</h1>
+            <p>Paste your portfolio content here.</p>
+
+            <section>
+
+                <div class="model-box" onclick="openModelViewer()">
+                    <img src="assets/image.png" class="preview-img">
+                    <div class="preview-overlay">Click to View 3D Model</div>
+                </div>
+
+                <div id="viewer-modal" class="viewer-modal">
+                    <div class="viewer-content">
+                        <span class="close-btn" onclick="closeModelViewer()">✖</span>
+
+                        <!-- <model-viewer src="assets/MechanicalRelaySally.glb" camera-controls auto-rotate
+                            shadow-intensity="1">
+                        </model-viewer> -->
+                        <div id="three-container" style="width:100%; height:500px;"></div>
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+                <h2>Featured Work</h2>
+                <p>Describe your projects, images, links, etc.</p>
+            </section>
+
+            <section>
+                <h2>Skills</h2>
+                <p>List your skills or add cards like your index page.</p>
+            </section>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
